@@ -1,22 +1,22 @@
-# go-voicetext - VoiceText Web API client
+# go-voicetext - VoiceText Web API クライアント
 
 [![wercker status](https://app.wercker.com/status/d481b39df7a76348daee6a5332b16475/m "wercker status")](https://app.wercker.com/project/bykey/d481b39df7a76348daee6a5332b16475)
 [![Coverage Status](https://coveralls.io/repos/yosssi/go-voicetext/badge.png?branch=HEAD)](https://coveralls.io/r/yosssi/go-voicetext?branch=HEAD)
 [![GoDoc](https://godoc.org/github.com/yosssi/go-voicetext?status.svg)](https://godoc.org/github.com/yosssi/go-voicetext)
 
-## Overview
+## 概要
 
-go-voicetext provides a [VoiceText Web API](https://cloud.voicetext.jp/webapi) client for Go.
+go-voicetextはGo言語向けの[VoiceText Web API](https://cloud.voicetext.jp/webapi)クライアントです。
 
-## Installation
+## インストール
 
 ```sh
 go get -u github.com/yosssi/go-voicetext
 ```
 
-## Example
+## 実装例
 
-Here is a simple example using go-voicetext.
+go-voicetextを用いた簡単な実装例を以下に記載します。
 
 ```go
 package main
@@ -57,7 +57,7 @@ func main() {
 }
 ```
 
-You can set options to the `TTS` method as following:
+以下のように、`TTS`メソッドにオプションの設定を指定することができます。
 
 ```go
 package main
@@ -105,6 +105,6 @@ func main() {
 }
 ```
 
-## Documentation
+## ドキュメント
 
 * [GoDoc](http://godoc.org/github.com/yosssi/go-voicetext)
