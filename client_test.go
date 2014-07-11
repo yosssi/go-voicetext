@@ -26,7 +26,7 @@ func Test_client_TTS_jsonUnmarshalReturnsError(t *testing.T) {
 		Version: "notExistVersion",
 	})
 	_, err := client.TTS("hello", nil)
-	if err == nil {
-		t.Error("an error should be returned.")
+	if err != nil {
+		t.Error(err)
 	}
 }

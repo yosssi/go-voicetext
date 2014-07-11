@@ -7,7 +7,7 @@ import (
 )
 
 func Test_newResult(t *testing.T) {
-	var errMsg ttsErrMsg
+	var errMsg TTSErrMsg
 
 	if err := json.Unmarshal([]byte(`{"error":{"message": "test msg"}}`), &errMsg); err != nil {
 		t.Error(err)

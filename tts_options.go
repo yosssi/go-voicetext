@@ -1,13 +1,5 @@
 package voicetext
 
-// Speakers
-const (
-	SpeakerShow   = "show"
-	SpeakerHaruka = "haruka"
-	SpeakerHikari = "hikari"
-	SpeakerTakeru = "takeru"
-)
-
 // Emotions
 const (
 	EmotionHappiness = "happiness"
@@ -17,16 +9,38 @@ const (
 
 // Defaults
 const (
+	defaultPitch  = 100
+	defaultSpeed  = 100
+	defaultVolume = 100
+)
+
+// Speakers
+var (
+	SpeakerShow = speaker{
+		name:          "show",
+		canUseEmotion: false,
+	}
+	SpeakerHaruka = speaker{
+		name:          "haruka",
+		canUseEmotion: true,
+	}
+	SpeakerHikari = speaker{
+		name:          "hikari",
+		canUseEmotion: true,
+	}
+	SpeakerTakeru = speaker{
+		name:          "takeru",
+		canUseEmotion: true,
+	}
+
+	emptySpeaker   = speaker{}
 	defaultSpeaker = SpeakerShow
-	defaultPitch   = 100
-	defaultSpeed   = 100
-	defaultVolume  = 100
 )
 
 // TTSOptions represents options for the TTS method.
 type TTSOptions struct {
 	// Speaker represents a speaker of the speech.
-	Speaker string
+	Speaker speaker
 	// Emotion represents an emotion of the speech.
 	Emotion string
 	// EmotionLevel represents an emotion level of the speech.
@@ -41,10 +55,10 @@ type TTSOptions struct {
 
 // setDefaults sets defaults to the TTS method's options.
 func (opts *TTSOptions) setDefaults() {
-	if opts.Speaker == "" {
+	if opts.Speaker == emptySpeaker {
 		opts.Speaker = defaultSpeaker
 	}
-	if opts.Speaker == SpeakerShow {
+	if !opts.Speaker.canUseEmotion {
 		opts.Emotion = ""
 	}
 	if opts.Pitch == 0 {

@@ -60,9 +60,18 @@ func (c *client) TTS(text string, opts *TTSOptions) (*Result, error) {
 
 	// Return the error message if the HTTP status code does not equal to StatusOK.
 	if status != http.StatusOK {
-		var errMsg ttsErrMsg
+		var errMsg TTSErrMsg
 		if err := json.Unmarshal(b, &errMsg); err != nil {
-			return nil, err
+			result := newResult(
+				status,
+				nil,
+				&TTSErrMsg{
+					Err: TTSErrMsgError{
+						Message: string(b),
+					},
+				},
+			)
+			return result, nil
 		}
 		return newResult(status, nil, &errMsg), nil
 	}
@@ -107,7 +116,7 @@ func ttsURL(version string) string {
 func ttsValues(text string, opts *TTSOptions) string {
 	values := url.Values{}
 	values.Add("text", text)
-	values.Add("speaker", opts.Speaker)
+	values.Add("speaker", opts.Speaker.name)
 	values.Add("emotion", opts.Emotion)
 	values.Add("emotion_level", opts.EmotionLevel)
 	values.Add("pitch", strconv.Itoa(opts.Pitch))
