@@ -32,6 +32,14 @@ var (
 		name:          "takeru",
 		canUseEmotion: true,
 	}
+	SpeakerSanta = speaker{
+		name:          "santa",
+		canUseEmotion: true,
+	}
+	SpeakerBear = speaker{
+		name:          "bear",
+		canUseEmotion: true,
+	}
 
 	emptySpeaker   = speaker{}
 	defaultSpeaker = SpeakerShow
